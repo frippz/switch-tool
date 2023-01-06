@@ -13,6 +13,23 @@
   const savePortState = (portNumber: string, active: string) => {
     localStorage.setItem(`port-${portNumber}`, active);
   };
+
+  // Update the state of the port based on the previous state
+  const updatePortState = (portNumber: string, port: any) => {
+    if (typeof window !== 'undefined') {
+      const previousState = localStorage.getItem(`port-${portNumber}`);
+      if (previousState !== null) {
+        port.selected = previousState === 'true';
+      }
+    }
+  };
+
+  // Update the state of each port
+  for (const group of groupedData) {
+    for (const port of group) {
+      updatePortState(port.number, port);
+    }
+  }
 </script>
 
 {#each groupedData as group}
