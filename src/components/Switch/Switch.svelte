@@ -36,7 +36,7 @@
   }
 </script>
 
-<h2>Switch {switchGroup}</h2>
+<h2>Switch #{switchGroup} ({numPorts} ports)</h2>
 <div class="switch">
   {#each groupedData as group}
     <div class="port-group group-size-{portsPerGroup}">
