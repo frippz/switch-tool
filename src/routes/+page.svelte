@@ -1,6 +1,6 @@
 <script>
   import '../styles/base.css';
-  import Switch from '../components/Switch/Switch.svelte';
+  import Switch from '../components/Switch.svelte';
 </script>
 
 <h1>Switch Port Utilization Tool™</h1>
@@ -8,4 +8,4 @@
 
 <Switch switchGroup={1} numPorts={16} portsPerGroup={8} />
 
-<Switch switchGroup={2} numPorts={48} portsPerGroup={12} />
+<Switch switchGroup={2} numPorts={24} />
