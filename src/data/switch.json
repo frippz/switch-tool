@@ -1,8 +1,8 @@
 [
-  { "number": 1, "selected": true },
+  { "number": 1, "selected": false },
   { "number": 2, "selected": false },
   { "number": 3, "selected": false },
-  { "number": 4, "selected": true },
+  { "number": 4, "selected": false },
   { "number": 5, "selected": false },
   { "number": 6, "selected": false },
   { "number": 7, "selected": false },

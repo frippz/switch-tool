@@ -32,23 +32,38 @@
   }
 </script>
 
-{#each groupedData as group}
-  <div class="port-group">
-    {#each group as port}
-      <div class="port">
-        <input
-          type="checkbox"
-          id="sw{switchGroup}-port-{port.number}"
-          bind:checked={port.selected}
-          on:change={() => savePortState(port.number, port.selected)}
-        />
-        <label for="sw1-port-{port.number}">{port.number}</label>
-      </div>
-    {/each}
-  </div>
-{/each}
+<div class="switch">
+  {#each groupedData as group}
+    <div class="port-group">
+      {#each group as port}
+        <div class="port">
+          <input
+            type="checkbox"
+            id="sw{switchGroup}-port-{port.number}"
+            bind:checked={port.selected}
+            on:change={() => savePortState(port.number, port.selected)}
+          />
+          <label for="sw1-port-{port.number}">{port.number}</label>
+        </div>
+      {/each}
+    </div>
+  {/each}
+</div>
 
 <style>
+  .switch {
+    border-radius: 0.5rem;
+    background-color: hsl(0deg 0% 10%);
+    height: 10rem;
+    padding: 1rem;
+    display: grid;
+    grid-gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(12rem, min-content));
+    align-items: center;
+    justify-content: end;
+    white-space: nowrap;
+  }
+
   .port-group {
     display: grid;
     grid-gap: 0.5rem;
