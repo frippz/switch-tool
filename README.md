@@ -4,7 +4,7 @@ My very first Sveltekit project! 🎉
 
 I needed something to get going with my learning journey and this little planning tool was a pretty good first candidate.
 
-Deployed to Cloudflare: https://7099cfed.switch-tool.pages.dev
+Deployed to Cloudflare: https://switch-tool.pages.dev
 
 ## Features
 
