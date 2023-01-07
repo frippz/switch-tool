@@ -77,20 +77,22 @@
   }
 
   .port-group {
+    --port-size: 2.6em;
+
     display: grid;
     grid-gap: 0.5rem;
-    grid-template-rows: repeat(2, 3em);
+    grid-template-rows: repeat(2, var(--port-size));
     align-items: stretch;
     justify-items: stretch;
     margin-top: 0;
   }
 
   .port-group.group-size-8 {
-    grid-template-columns: repeat(4, 3em);
+    grid-template-columns: repeat(4, var(--port-size));
   }
 
   .port-group.group-size-12 {
-    grid-template-columns: repeat(6, 3em);
+    grid-template-columns: repeat(6, var(--port-size));
   }
 
   .port {
