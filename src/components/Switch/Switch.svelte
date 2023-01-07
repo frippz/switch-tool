@@ -56,9 +56,16 @@
 </div>
 
 <style>
+  :root {
+    --switch-bg: hsl(0deg 0% 10%);
+    --switch-bg-hover: hsl(0deg 0% 14%);
+    --port-bg: hsl(0deg 0% 20%);
+    --port-active: hsla(125deg 33% 50% / 1.9);
+  }
+
   .switch {
     border-radius: 0.5rem;
-    background-color: hsl(0deg 0% 10%);
+    background-color: var(--switch-bg);
     height: 10rem;
     padding: 1rem;
     display: grid;
@@ -104,13 +111,24 @@
     justify-content: start;
     overflow: hidden;
     border-radius: 0.25rem;
-    background-color: hsla(0deg 0% 100% / 0.15);
+    background-color: var(--port-bg);
     position: relative;
     padding: 0.25rem;
     margin-top: 0;
+    cursor: pointer;
+  }
+
+  label:hover {
+    filter: brightness(1.2);
   }
 
   input:checked + label {
-    background-color: hsla(125deg 33% 50% / 1.9);
+    background-color: var(--port-active);
+  }
+
+  input:focus + label {
+    outline: none;
+    box-shadow: 0 0 0 0.25em var(--switch-bg), 0 0 0 0.375em var(--port-active);
+    transition: box-shadow 0.2s ease-out;
   }
 </style>
