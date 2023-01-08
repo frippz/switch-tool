@@ -2,8 +2,15 @@
   import Port from './Port.svelte';
 
   export let switchGroup: number;
-  export let portsPerGroup: number = 8;
   export let numberOfPorts: number;
+
+  let portsPerGroup: number;
+
+  if (numberOfPorts >= 24) {
+    portsPerGroup = 12;
+  } else {
+    portsPerGroup = 8;
+  }
 
   // Group the data by 8 ports
   const portGroups: any[][] = [];
