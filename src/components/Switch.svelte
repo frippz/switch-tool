@@ -63,8 +63,7 @@
 
     border-radius: 0.5rem;
     background-color: var(--switch-bg);
-    height: 10rem;
-    padding: 1rem;
+    padding: 1.5rem;
     display: grid;
     grid-gap: 1rem;
     grid-template-columns: repeat(auto-fit, minmax(12rem, min-content));
