@@ -1,21 +1,23 @@
 <script lang="ts">
+  import Port from './Port.svelte';
+
   export let switchGroup: number;
   export let portsPerGroup: number = 8;
-  export let numPorts: number;
+  export let numberOfPorts: number;
 
   // Group the data by 8 ports
-  const groupedData: any[][] = [];
-  Array.from({ length: Math.ceil(numPorts / portsPerGroup) }).forEach((_, i) => {
-    groupedData.push(
+  const portGroups: any[][] = [];
+  for (let i = 0; i < numberOfPorts; i += portsPerGroup) {
+    portGroups.push(
       Array.from({ length: portsPerGroup }, (_, j) => ({
-        number: `${i * portsPerGroup + j + 1}`
-      })).slice(0, numPorts - i * portsPerGroup)
+        number: `${i + j + 1}`
+      })).slice(0, numberOfPorts - i)
     );
-  });
+  }
 
   // Save utilized ports to localStorage
-  const savePortState = (portNumber: string, active: string) => {
-    localStorage.setItem(`switch-${switchGroup}-port-${portNumber}`, active);
+  const savePortState = (portNumber: string, active: boolean) => {
+    localStorage.setItem(`switch-${switchGroup}-port-${portNumber}`, active.toString());
   };
 
   // Update the state of the port based on the previous state
@@ -29,41 +31,29 @@
   };
 
   // Update the state of each port
-  for (const group of groupedData) {
+  for (const group of portGroups) {
     for (const port of group) {
       updatePortState(port.number, port);
     }
   }
 </script>
 
-<h2>Switch #{switchGroup} ({numPorts} ports)</h2>
+<h2>Switch #{switchGroup} ({numberOfPorts} ports)</h2>
 <div class="switch">
-  {#each groupedData as group}
+  {#each portGroups as group}
     <div class="port-group group-size-{portsPerGroup}">
       {#each group as port}
-        <div class="port">
-          <input
-            type="checkbox"
-            id="sw{switchGroup}-port-{port.number}"
-            bind:checked={port.selected}
-            on:change={() => savePortState(port.number, port.selected)}
-          />
-          <label for="sw{switchGroup}-port-{port.number}">{port.number}</label>
-        </div>
+        <Port {switchGroup} portNumber={port.number} selected={port.selected} {savePortState} />
       {/each}
     </div>
   {/each}
 </div>
 
 <style>
-  :root {
+  .switch {
     --switch-bg: hsl(0deg 0% 10%);
     --switch-bg-hover: hsl(0deg 0% 14%);
-    --port-bg: hsl(0deg 0% 20%);
-    --port-active: hsla(125deg 33% 50% / 1.9);
-  }
 
-  .switch {
     border-radius: 0.5rem;
     background-color: var(--switch-bg);
     height: 10rem;
@@ -93,44 +83,5 @@
 
   .port-group.group-size-12 {
     grid-template-columns: repeat(6, var(--port-size));
-  }
-
-  .port {
-    display: flex;
-    margin-top: 0;
-  }
-
-  input {
-    position: absolute;
-    top: -1rem;
-    left: -1rem;
-  }
-
-  label {
-    flex: 1;
-    display: flex;
-    align-items: end;
-    justify-content: start;
-    overflow: hidden;
-    border-radius: 0.25rem;
-    background-color: var(--port-bg);
-    position: relative;
-    padding: 0.25rem;
-    margin-top: 0;
-    cursor: pointer;
-  }
-
-  label:hover {
-    filter: brightness(1.2);
-  }
-
-  input:checked + label {
-    background-color: var(--port-active);
-  }
-
-  input:focus + label {
-    outline: none;
-    box-shadow: 0 0 0 0.25em var(--switch-bg), 0 0 0 0.375em var(--port-active);
-    transition: box-shadow 0.2s ease-out;
   }
 </style>
