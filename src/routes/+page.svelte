@@ -9,3 +9,5 @@
 <Switch switchGroup={1} numberOfPorts={16} />
 
 <Switch switchGroup={2} numberOfPorts={24} />
+
+<Switch switchGroup={3} numberOfPorts={48} />

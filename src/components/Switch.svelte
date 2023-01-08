@@ -1,9 +1,14 @@
+<script lang="ts" context="module">
+  let idCounter: number = 0;
+</script>
+
 <script lang="ts">
   import Port from './Port.svelte';
 
   export let switchGroup: number;
   export let numberOfPorts: number;
 
+  let componentId: string = `switch-${idCounter++}`;
   let portsPerGroup: number;
 
   if (numberOfPorts >= 24) {
@@ -45,16 +50,18 @@
   }
 </script>
 
-<h2>Switch #{switchGroup} ({numberOfPorts} ports)</h2>
-<div class="switch">
-  {#each portGroups as group}
-    <div class="port-group group-size-{portsPerGroup}">
-      {#each group as port}
-        <Port {switchGroup} portNumber={port.number} selected={port.selected} {savePortState} />
-      {/each}
-    </div>
-  {/each}
-</div>
+<section id={componentId}>
+  <h2>Switch #{switchGroup} ({numberOfPorts} ports)</h2>
+  <div class="switch">
+    {#each portGroups as group}
+      <div class="port-group group-size-{portsPerGroup}">
+        {#each group as port}
+          <Port {switchGroup} portNumber={port.number} selected={port.selected} {savePortState} />
+        {/each}
+      </div>
+    {/each}
+  </div>
+</section>
 
 <style>
   .switch {
