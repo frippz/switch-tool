@@ -35,7 +35,7 @@
   // Update the state of the port based on the previous state
   const updatePortState = (portNumber: string, port: any) => {
     if (typeof window !== 'undefined') {
-      const previousState = localStorage.getItem(`switch-${componentId}-port-${portNumber}`);
+      const previousState = localStorage.getItem(`${componentId}-port-${portNumber}`);
       if (previousState !== null) {
         port.selected = previousState === 'true';
       }
