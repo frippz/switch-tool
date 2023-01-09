@@ -4,6 +4,7 @@
 
 <script lang="ts">
   import Port from './Port.svelte';
+  import ScrollWrapper from './ScrollWrapper.svelte';
 
   export let numberOfPorts: number;
 
@@ -51,15 +52,17 @@
 
 <section id={componentId}>
   <h2>Switch #{componentId} ({numberOfPorts} ports)</h2>
-  <div class="switch">
-    {#each portGroups as group}
-      <div class="port-group group-size-{portsPerGroup}">
-        {#each group as port}
-          <Port {componentId} portNumber={port.number} selected={port.selected} {savePortState} />
-        {/each}
-      </div>
-    {/each}
-  </div>
+  <ScrollWrapper>
+    <div class="switch">
+      {#each portGroups as group}
+        <div class="port-group group-size-{portsPerGroup}">
+          {#each group as port}
+            <Port {componentId} portNumber={port.number} selected={port.selected} {savePortState} />
+          {/each}
+        </div>
+      {/each}
+    </div>
+  </ScrollWrapper>
 </section>
 
 <style>
