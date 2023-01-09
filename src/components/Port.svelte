@@ -1,5 +1,5 @@
 <script lang="ts">
-  export let switchGroup: number;
+  export let componentId: string;
   export let portNumber: string;
   export let selected: boolean;
   export let savePortState: (portNumber: string, active: boolean) => void;
@@ -8,11 +8,11 @@
 <div class="port">
   <input
     type="checkbox"
-    id="sw{switchGroup}-port-{portNumber}"
+    id="{componentId}-port-{portNumber}"
     bind:checked={selected}
     on:change={() => savePortState(portNumber, selected)}
   />
-  <label for="sw{switchGroup}-port-{portNumber}">{portNumber}</label>
+  <label for="{componentId}-port-{portNumber}">{portNumber}</label>
 </div>
 
 <style>

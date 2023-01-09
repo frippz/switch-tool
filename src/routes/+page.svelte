@@ -6,8 +6,8 @@
 <h1>Switch Port Utilization Tool™</h1>
 <p>Built using Sveltekit by someone that wants to learn more. 😘</p>
 
-<Switch switchGroup={1} numberOfPorts={16} />
+<Switch numberOfPorts={16} />
 
-<Switch switchGroup={2} numberOfPorts={24} />
+<Switch numberOfPorts={24} />
 
-<Switch switchGroup={3} numberOfPorts={48} />
+<Switch numberOfPorts={48} />

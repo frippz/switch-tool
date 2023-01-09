@@ -5,7 +5,6 @@
 <script lang="ts">
   import Port from './Port.svelte';
 
-  export let switchGroup: number;
   export let numberOfPorts: number;
 
   let componentId: string = `switch-${idCounter++}`;
@@ -29,13 +28,13 @@
 
   // Save utilized ports to localStorage
   const savePortState = (portNumber: string, active: boolean) => {
-    localStorage.setItem(`switch-${switchGroup}-port-${portNumber}`, active.toString());
+    localStorage.setItem(`${componentId}-port-${portNumber}`, active.toString());
   };
 
   // Update the state of the port based on the previous state
   const updatePortState = (portNumber: string, port: any) => {
     if (typeof window !== 'undefined') {
-      const previousState = localStorage.getItem(`switch-${switchGroup}-port-${portNumber}`);
+      const previousState = localStorage.getItem(`switch-${componentId}-port-${portNumber}`);
       if (previousState !== null) {
         port.selected = previousState === 'true';
       }
@@ -51,12 +50,12 @@
 </script>
 
 <section id={componentId}>
-  <h2>Switch #{switchGroup} ({numberOfPorts} ports)</h2>
+  <h2>Switch #{componentId} ({numberOfPorts} ports)</h2>
   <div class="switch">
     {#each portGroups as group}
       <div class="port-group group-size-{portsPerGroup}">
         {#each group as port}
-          <Port {switchGroup} portNumber={port.number} selected={port.selected} {savePortState} />
+          <Port {componentId} portNumber={port.number} selected={port.selected} {savePortState} />
         {/each}
       </div>
     {/each}
@@ -77,6 +76,7 @@
     align-items: center;
     justify-content: end;
     white-space: nowrap;
+    width: 82em;
   }
 
   .port-group {
