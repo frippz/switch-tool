@@ -4,7 +4,7 @@
 
 <script lang="ts">
   import Port from './Port.svelte';
-  import ScrollWrapper from './ScrollWrapper.svelte';
+  import ScrollWrapper from '$lib/components/ScrollWrapper.svelte';
 
   export let numberOfPorts: number;
 
