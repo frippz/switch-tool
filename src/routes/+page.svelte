@@ -1,6 +1,6 @@
 <script>
   import '../styles/base.css';
-  import Switch from '../components/Switch.svelte';
+  import Switch from '$lib/components/Switch.svelte';
 </script>
 
 <h1>Switch Port Utilization Tool™</h1>
