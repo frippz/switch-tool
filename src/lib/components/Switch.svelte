@@ -88,6 +88,7 @@
     display: grid;
     grid-gap: 0.5rem;
     grid-template-rows: repeat(2, var(--port-size));
+    grid-auto-flow: column;
     align-items: stretch;
     justify-items: stretch;
     margin-top: 0;
