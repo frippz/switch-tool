@@ -9,10 +9,9 @@
   let savedSwitches: any = [];
   let selected: boolean;
 
-  const insertSwitch = () => {
-    switches = [...switches, selected];
+  const insertSwitch = (ports: number) => {
+    switches = [...switches, ports];
     localStorage.setItem('switches', JSON.stringify(switches));
-    console.log(selected);
   };
 
   onMount(() => {
