@@ -8,7 +8,7 @@
 
   export let numberOfPorts: number;
 
-  let componentId: string = `switch-${idCounter++}`;
+  let componentId: string = `${idCounter++ + 1}`;
   let portsPerGroup: number;
 
   if (numberOfPorts >= 24) {
@@ -29,13 +29,13 @@
 
   // Save utilized ports to localStorage
   const savePortState = (portNumber: string, active: boolean) => {
-    localStorage.setItem(`${componentId}-port-${portNumber}`, active.toString());
+    localStorage.setItem(`switch-${componentId}-port-${portNumber}`, active.toString());
   };
 
   // Update the state of the port based on the previous state
   const updatePortState = (portNumber: string, port: any) => {
     if (typeof window !== 'undefined') {
-      const previousState = localStorage.getItem(`${componentId}-port-${portNumber}`);
+      const previousState = localStorage.getItem(`switch-${componentId}-port-${portNumber}`);
       if (previousState !== null) {
         port.selected = previousState === 'true';
       }
@@ -50,7 +50,7 @@
   }
 </script>
 
-<section id={componentId}>
+<section id={`switch-${componentId}`}>
   <h2>Switch #{componentId} ({numberOfPorts} ports)</h2>
   <ScrollWrapper>
     <div class="switch">
@@ -79,7 +79,7 @@
     align-items: center;
     justify-content: end;
     white-space: nowrap;
-    width: 82em;
+    width: 78em;
   }
 
   .port-group {
