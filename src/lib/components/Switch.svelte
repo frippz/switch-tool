@@ -3,6 +3,8 @@
 </script>
 
 <script lang="ts">
+  import { fade } from 'svelte/transition';
+
   import Port from './Port.svelte';
   import ScrollWrapper from '$lib/components/ScrollWrapper.svelte';
 
@@ -50,7 +52,7 @@
   }
 </script>
 
-<section id={`switch-${componentId}`}>
+<section id={`switch-${componentId}`} transition:fade>
   <h2>Switch #{componentId} ({numberOfPorts} ports)</h2>
   <ScrollWrapper>
     <div class="switch">
