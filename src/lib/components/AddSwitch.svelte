@@ -1,15 +1,15 @@
 <script lang="ts">
-  export let onSubmit: (selected: number) => void;
+  export let onSubmit: (ports: number) => void;
 
-  let selected: number;
+  let ports: number;
 
   const submitSwitchConfig = () => {
-    onSubmit(selected);
+    onSubmit(ports);
   };
 </script>
 
 <form on:submit|preventDefault={submitSwitchConfig}>
-  <select id="switchsize" bind:value={selected}>
+  <select id="switchsize" bind:value={ports}>
     <option value="16">16</option>
     <option value="24">24</option>
     <option value="48">48</option>

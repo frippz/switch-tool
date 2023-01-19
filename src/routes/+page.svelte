@@ -7,7 +7,6 @@
 
   let switches: any = [];
   let savedSwitches: any = [];
-  let selected: boolean;
 
   const insertSwitch = (ports: number) => {
     switches = [...switches, ports];
@@ -17,7 +16,6 @@
   onMount(() => {
     savedSwitches = localStorage.getItem('switches');
     switches = JSON.parse(savedSwitches) || [];
-    console.log(switches, selected);
   });
 </script>
 
