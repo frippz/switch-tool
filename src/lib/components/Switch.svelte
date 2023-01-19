@@ -1,16 +1,17 @@
 <script lang="ts" context="module">
-  let idCounter: number = 0;
+  let switchCounter: number = 1;
 </script>
 
 <script lang="ts">
+  import { v4 as uuidv4 } from 'uuid';
   import { fade } from 'svelte/transition';
 
   import Port from './Port.svelte';
   import ScrollWrapper from '$lib/components/ScrollWrapper.svelte';
 
   export let numberOfPorts: number;
+  export let componentId: string = uuidv4();
 
-  let componentId: string = `${idCounter++ + 1}`;
   let portsPerGroup: number;
 
   if (numberOfPorts >= 24) {
@@ -52,8 +53,8 @@
   }
 </script>
 
-<section id={`switch-${componentId}`} transition:fade>
-  <h2>Switch #{componentId} ({numberOfPorts} ports)</h2>
+<section id={componentId} transition:fade>
+  <h2>Switch #{switchCounter++} ({numberOfPorts} ports)</h2>
   <ScrollWrapper>
     <div class="switch">
       {#each portGroups as group}
