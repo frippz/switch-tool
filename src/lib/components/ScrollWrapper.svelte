@@ -4,7 +4,7 @@
 
 <style>
   .scroll-wrapper {
-    overflow-x: scroll;
     padding: 0 0 1em;
+    overflow-x: scroll;
   }
 </style>

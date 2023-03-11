@@ -18,7 +18,7 @@
 <style>
   .port {
     --port-bg: hsl(0deg 0% 20%);
-    --port-active: hsla(125deg 33% 50% / 1.9);
+    --port-active: hsla(125deg 33% 50% / 190%);
 
     display: flex;
     margin-top: 0;
@@ -32,17 +32,17 @@
   }
 
   label {
-    flex: 1;
+    position: relative;
     display: flex;
+    flex: 1;
     align-items: end;
     justify-content: start;
-    overflow: hidden;
-    border-radius: 0.25rem;
-    background-color: var(--port-bg);
-    position: relative;
     padding: 0.25rem;
     margin-top: 0;
+    overflow: hidden;
     cursor: pointer;
+    background-color: var(--port-bg);
+    border-radius: 0.25rem;
   }
 
   label:hover {

@@ -73,25 +73,25 @@
     --switch-bg: hsl(0deg 0% 10%);
     --switch-bg-hover: hsl(0deg 0% 14%);
 
-    border-radius: 0.5rem;
-    background-color: var(--switch-bg);
-    padding: 1.5rem;
     display: grid;
-    grid-gap: 1rem;
     grid-template-columns: repeat(auto-fit, minmax(12rem, min-content));
+    grid-gap: 1rem;
     align-items: center;
     justify-content: end;
-    white-space: nowrap;
     width: 78em;
+    padding: 1.5rem;
+    white-space: nowrap;
+    background-color: var(--switch-bg);
+    border-radius: 0.5rem;
   }
 
   .port-group {
     --port-size: 2.6em;
 
     display: grid;
-    grid-gap: 0.5rem;
     grid-template-rows: repeat(2, var(--port-size));
     grid-auto-flow: column;
+    grid-gap: 0.5rem;
     align-items: stretch;
     justify-items: stretch;
     margin-top: 0;

@@ -3,9 +3,9 @@
 }
 
 body {
-  font-family: "Avenir Next", sans-serif;
-  background-color: hsl(0deg 0% 0%);
-  color: hsla(0deg 0% 100%);
   padding: 1rem;
   margin: 0;
+  font-family: "Avenir Next", sans-serif;
+  color: hsla(0deg 0% 100%);
+  background-color: hsl(0deg 0% 0%);
 }
